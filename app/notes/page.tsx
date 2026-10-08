@@ -4,9 +4,9 @@ import {
   dehydrate,
 } from "@tanstack/react-query";
 import { fetchNotes } from "@/lib/api";
-import NotesPage from "@/components/NotesPage/NotesPage";
+import NotesClient from "./Notes.client";
 
-export default async function Page() {
+export default async function NotesPage() {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
@@ -16,7 +16,7 @@ export default async function Page() {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotesPage />
+      <NotesClient />
     </HydrationBoundary>
   );
 }
