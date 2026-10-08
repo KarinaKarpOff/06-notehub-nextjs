@@ -16,7 +16,6 @@ export default async function NoteDetailsPage({
   const { id } = await params;
   const queryClient = new QueryClient();
 
-  // Предварительно загружаем данные конкретной нотатки на сервере
   await queryClient.prefetchQuery({
     queryKey: ["note", id],
     queryFn: () => fetchNoteById(id),
